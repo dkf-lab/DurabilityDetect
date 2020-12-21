@@ -179,10 +179,10 @@ public class DamageListener implements Listener {
         //do stuff
         player.playSound(player.getLocation(), Sound.ENTITY_ENDEREYE_DEATH, 3.0F, 0.5F);
         if (type.equals("chestplate") || type.equals("helmet")) {
-            player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.RED + ChatColor.BOLD + type + ChatColor.GRAY + " is " +ChatColor.RED + "low" +ChatColor.GRAY + "on durability!");
+            player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.RED + ChatColor.BOLD + type + ChatColor.GRAY + " is " +ChatColor.RED + "low" +ChatColor.GRAY + " durability!");
         }
         else {
-            player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.RED + ChatColor.BOLD + type + ChatColor.GRAY + " are " + ChatColor.RED + "low" + ChatColor.GRAY + " on durability!");
+            player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.RED + ChatColor.BOLD + type + ChatColor.GRAY + " are " + ChatColor.RED + "low" + ChatColor.GRAY + " durability!");
         }
     }
     private void brokenPlayer (Player player, String type) {
