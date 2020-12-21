@@ -1,0 +1,19 @@
+# Durability Notifications
+# the durability for when the player is notified
+#TOOLS
+#The durability at which the player is warned
+durability: 10
+#Change these to false to disable the durability notification
+diamond: true
+gold: true
+iron: true
+stone: false
+wood: false
+#ARMOUR
+helmet: 20
+chestplate: 50
+leggings: 40
+boots: 30
+#length in seconds
+lengthOfMiningFatigue: 5
+levelOfMiningFatigue: 4
