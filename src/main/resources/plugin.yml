@@ -1,4 +1,4 @@
 name: DurabilityDetect
 version: ${project.version}
 main: me.dkflab.durabilitydetect.DurabilityDetect
-authors: [dkflab]
+author: dkflab
