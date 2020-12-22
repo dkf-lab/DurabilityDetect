@@ -37,49 +37,48 @@ public class MiningListener implements Listener {
             case IRON_SPADE:
             case IRON_AXE:
                 if (250-item.getDurability() == pickaxeDur&&iron) {
-                    player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.WHITE + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability!");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
-                    player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
+                    alertPlayer(player);
                 }
                 break;
             case DIAMOND_SPADE:
             case DIAMOND_AXE:
             case DIAMOND_PICKAXE:
                 if (1561-item.getDurability() == pickaxeDur&&diamond) {
-                    player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
-                    player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.BLUE + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
+                    alertPlayer(player);
                 }
                 break;
             case GOLD_PICKAXE:
             case GOLD_SPADE:
             case GOLD_AXE:
                 if (32-item.getDurability() == pickaxeDur&&gold) {
-                    player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.GOLD + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
-                    player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
+                    alertPlayer(player);
                 }
                 break;
             case STONE_PICKAXE:
             case STONE_SPADE:
             case STONE_AXE:
                 if (131-item.getDurability() == pickaxeDur&&stone) {
-                    player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.DARK_GRAY + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
-                    player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
+                    alertPlayer(player);
                 }
                 break;
             case WOOD_PICKAXE:
             case WOOD_AXE:
             case WOOD_SPADE:
                 if (59-item.getDurability() == pickaxeDur&&wood) {
-                    player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.GREEN + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
-                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
-                    player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
+                    alertPlayer(player);
                 }
                 break;
             default:
                 break;
             }
         }
+        private void alertPlayer (Player player) {
+            // varible declaration
+            FileConfiguration config = DurabilityDetect.getInstance().getConfig();
+            int miningLevel = config.getInt("levelOfMiningFatigue");
+            int miningDuration = config.getInt("lengthOfMiningFatigue") * 20;
+            // actual code
+            player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.RED + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
+            player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
+            player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));        }
     }
