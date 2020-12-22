@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.PlayerInventory;
 
 public class DamageListener implements Listener {
+
     @EventHandler
     public void entityDamage(EntityDamageEvent event) {
         if (event.getEntityType().equals(EntityType.PLAYER)) {
@@ -186,7 +187,7 @@ public class DamageListener implements Listener {
         }
     }
     private void brokenPlayer (Player player, String type) {
-        player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 3.0f, 0.5f);
+        player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 5.0f, 0.5f);
         if (type.equals("chestplate")||type.equals("helmet")) {
             player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.DARK_RED + ChatColor.BOLD + type + ChatColor.GRAY + " is " + ChatColor.DARK_RED + ChatColor.BOLD + "broken!");
         }
@@ -194,5 +195,6 @@ public class DamageListener implements Listener {
             player.sendMessage(ChatColor.GRAY + "Your " + ChatColor.DARK_RED + ChatColor.BOLD + type + ChatColor.GRAY + " are "+ ChatColor.DARK_RED + ChatColor.BOLD + "broken!");
         }
     }
+
 }
 
