@@ -22,8 +22,6 @@ public class MiningListener implements Listener {
         //config load
         FileConfiguration config = DurabilityDetect.getInstance().getConfig();
         int pickaxeDur = config.getInt("durability");
-        int miningLevel = config.getInt("levelOfMiningFatigue");
-        int miningDuration = config.getInt("lengthOfMiningFatigue") * 20;
         boolean gold = config.getBoolean("gold");
         boolean diamond = config.getBoolean("diamond");
         boolean iron = config.getBoolean("iron");
@@ -34,11 +32,13 @@ public class MiningListener implements Listener {
             case IRON_PICKAXE:
             case IRON_SPADE:
             case IRON_AXE:
+            case IRON_HOE:
                 if (250-item.getDurability() == pickaxeDur&&iron) {
                     alertPlayer(player);
                 }
                 break;
             case DIAMOND_SPADE:
+            case DIAMOND_HOE:
             case DIAMOND_AXE:
             case DIAMOND_PICKAXE:
                 if (1561-item.getDurability() == pickaxeDur&&diamond) {
@@ -47,6 +47,7 @@ public class MiningListener implements Listener {
                 break;
             case GOLD_PICKAXE:
             case GOLD_SPADE:
+            case GOLD_HOE:
             case GOLD_AXE:
                 if (32-item.getDurability() == pickaxeDur&&gold) {
                     alertPlayer(player);
@@ -54,6 +55,7 @@ public class MiningListener implements Listener {
                 break;
             case STONE_PICKAXE:
             case STONE_SPADE:
+            case STONE_HOE:
             case STONE_AXE:
                 if (131-item.getDurability() == pickaxeDur&&stone) {
                     alertPlayer(player);
@@ -62,6 +64,7 @@ public class MiningListener implements Listener {
             case WOOD_PICKAXE:
             case WOOD_AXE:
             case WOOD_SPADE:
+            case WOOD_HOE:
                 if (59-item.getDurability() == pickaxeDur&&wood) {
                     alertPlayer(player);
                 }
@@ -71,12 +74,12 @@ public class MiningListener implements Listener {
             }
         }
         private void alertPlayer (Player player) {
-            // varible declaration
             FileConfiguration config = DurabilityDetect.getInstance().getConfig();
             int miningLevel = config.getInt("levelOfMiningFatigue");
             int miningDuration = config.getInt("lengthOfMiningFatigue") * 20;
-            // actual code
+
             player.sendMessage(ChatColor.GRAY + "Your " +ChatColor.RED + ChatColor.BOLD+"tool"+ChatColor.GRAY+" is low on durability.");
             player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_PLACE, 3.0F, 0.5F);
-            player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));        }
+            player.addPotionEffect((new PotionEffect(PotionEffectType.SLOW_DIGGING, miningDuration, miningLevel)));
+        }
     }
