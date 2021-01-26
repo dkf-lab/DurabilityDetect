@@ -6,7 +6,7 @@
 
     <groupId>me.dkflab.durabilitydetect</groupId>
     <artifactId>DurabilityDetect</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>DurabilityDetect</name>
